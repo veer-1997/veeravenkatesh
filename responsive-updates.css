@@ -1,0 +1,230 @@
+/* ========================================
+   RESPONSIVE DESIGN SYSTEM
+   ======================================== */
+
+/* Tablet & Smaller Desktop (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero-split {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .hero-left {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .hero-right {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .profile-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    /* Typography Scaling */
+    .name {
+        font-size: 3.5rem;
+    }
+
+    .sub-name {
+        font-size: 2.5rem;
+    }
+
+    /* Hide decorative HUD elements that clutter small screens */
+    .hud-side-bar,
+    .depth-indicator,
+    .hud-status-node {
+        display: none;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    :root {
+        --perspective: 800px;
+        /* Flatten perspective slightly */
+    }
+
+    .section-section {
+        padding: 3rem 0;
+    }
+
+    /* Typography */
+    .name {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .role {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* HUD Simplification */
+    .hud-corner {
+        padding: 1rem;
+    }
+
+    .hud-glitch,
+    .hud-sub,
+    .stat-row {
+        font-size: 0.5rem;
+    }
+
+    /* Hide non-essential HUD info */
+    .bottom-right .stat-row:nth-child(2) {
+        display: none;
+        /* Hide latency */
+    }
+
+    /* Hero */
+    .profile-container {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .contact-menu {
+        max-width: 100%;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .contact-trigger {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .contact-items {
+        width: 100%;
+        left: 0;
+    }
+
+    /* Timeline Stack */
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: left;
+        margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-year,
+    .timeline-item:nth-child(even) .timeline-content {
+        grid-column: 1;
+        text-align: left;
+    }
+
+    .timeline-year {
+        text-align: left;
+        grid-column: 1;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-year::after {
+        left: -20px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-year::after {
+        left: -20px;
+    }
+
+    .timeline-wrapper {
+        padding-left: 1.5rem;
+        /* Space for the line */
+    }
+
+    .timeline-wrapper::before {
+        left: 7px;
+        /* Align line with dots */
+    }
+
+    /* Cards */
+    .projects-grid,
+    .about-grid,
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        /* Force single column on mobile */
+        gap: 2rem;
+    }
+
+    .project-card,
+    .about-card,
+    .cert-card {
+        padding: 1.5rem;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Terminal */
+    .terminal-window {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Quote */
+    .quote-mark {
+        font-size: 3rem;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .name {
+        font-size: 2rem;
+    }
+
+    .datetime-display-top {
+        right: 50%;
+        transform: translateX(50%);
+        top: 1rem;
+        width: auto;
+        font-size: 0.7rem;
+        padding: 0 1rem;
+        height: 35px;
+        /* Ensure it's hidden initially properly if needed by JS, 
+           but CSS animation handles entry. */
+    }
+
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Hide some floating elements that might block view */
+    .float-node {
+        display: none;
+    }
+}

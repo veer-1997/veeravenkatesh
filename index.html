@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems & Engineering | Portfolio</title>
+    <meta name="description"
+        content="IT Manager and Systems Thinker specializing in resilient, low-friction IT environments.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-theme">
+    <canvas id="tubes-canvas"></canvas>
+    <!-- Cosmic Loading Sequence -->
+    <div id="cosmic-loader" class="cosmic-loader">
+        <!-- Stage 4: Black Hole -->
+        <div class="cosmic-stage active" id="stage-blackhole">
+            <div class="black-hole">
+                <div class="event-horizon"></div>
+                <div class="accretion-disk"></div>
+                <div class="singularity"></div>
+            </div>
+            <div class="loader-text">ENTERING SINGULARITY...</div>
+        </div>
+    </div>
+
+    <!-- Date/Time Display - Top Center -->
+    <div id="datetime-display" class="datetime-display-top"></div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+    </button>
+
+    <!-- Immersive 3D Space -->
+    <div class="perspective-container">
+        <div class="visual-noise"></div>
+        <div class="scanlines"></div>
+        <div class="parallax-bg" id="global-parallax">
+            <div class="bg-layer layer-grid"></div>
+            <div class="bg-layer layer-glow"></div>
+            <div class="bg-layer layer-bitstream"></div>
+            <div class="bg-layer layer-bitstream-h"></div>
+            <svg class="bg-layer layer-flows">
+                <use href="#flow-line" x="0" y="10%" />
+                <use href="#flow-line-pulse" x="200" y="20%" />
+                <use href="#flow-line" x="400" y="30%" />
+                <use href="#flow-line-alt" x="-100" y="45%" />
+                <use href="#flow-line" x="-200" y="50%" />
+                <use href="#flow-line-pulse" x="300" y="60%" />
+                <use href="#flow-line" x="150" y="70%" />
+                <use href="#flow-line-alt" x="500" y="85%" />
+                <use href="#flow-line" x="-400" y="90%" />
+            </svg>
+        </div>
+
+        <!-- SVG Asset Library -->
+        <svg style="display: none;">
+            <symbol id="circuit-pattern" viewBox="0 0 100 100">
+                <path d="M10 10 H90 V90 H10 Z" fill="none" stroke="currentColor" stroke-width="0.5" />
+                <circle cx="10" cy="10" r="1" fill="currentColor" />
+                <circle cx="90" cy="10" r="1" fill="currentColor" />
+                <circle cx="90" cy="90" r="1" fill="currentColor" />
+                <circle cx="10" cy="90" r="1" fill="currentColor" />
+                <path d="M10 50 H30 M70 50 H90 M50 10 V30 M50 70 V90" stroke="currentColor" stroke-width="0.5" />
+            </symbol>
+            <symbol id="circuit-header" viewBox="0 0 200 40">
+                <path d="M0 20 H50 L60 10 H140 L150 20 H200" fill="none" stroke="currentColor" stroke-width="1" />
+                <rect x="80" y="15" width="40" height="2" fill="currentColor" />
+                <circle cx="5" cy="20" r="2" fill="currentColor" />
+                <circle cx="195" cy="20" r="2" fill="currentColor" />
+            </symbol>
+            <symbol id="data-ring" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5"
+                    stroke-dasharray="10 5" />
+                <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="1"
+                    stroke-dasharray="1 3" />
+            </symbol>
+            <symbol id="hex-grid" viewBox="0 0 100 100">
+                <path d="M50 0 L93.3 25 V75 L50 100 L6.7 75 V25 Z" fill="none" stroke="currentColor"
+                    stroke-width="0.2" />
+                <path d="M50 20 L76 35 V65 L50 80 L24 65 V35 Z" fill="none" stroke="currentColor" stroke-width="0.1"
+                    opacity="0.5" />
+            </symbol>
+            <symbol id="circuit-bus" viewBox="0 0 100 40">
+                <path d="M0 10 H40 L50 20 H100 M0 30 H40 L50 20" fill="none" stroke="currentColor" stroke-width="0.5" />
+                <rect x="55" y="18" width="4" height="4" fill="currentColor" />
+                <rect x="65" y="18" width="4" height="4" fill="currentColor" />
+                <rect x="75" y="18" width="4" height="4" fill="currentColor" />
+            </symbol>
+            <symbol id="flow-line-alt" viewBox="0 0 1000 100">
+                <path class="path-flow-alt" d="M0 20 Q 250 80, 500 20 T 1000 20" fill="none" stroke="currentColor"
+                    stroke-width="1" stroke-dasharray="10 190" />
+            </symbol>
+            <symbol id="flow-line-pulse" viewBox="0 0 1000 100">
+                <path class="path-flow-pulse" d="M0 80 Q 250 20, 500 80 T 1000 80" fill="none" stroke="currentColor"
+                    stroke-width="3" stroke-dasharray="50 150" />
+            </symbol>
+        </svg>
+
+        <!-- HUD Interface -->
+        <div class="hud-overlay">
+            <div class="hud-corner top-left">
+                <div class="hud-glitch" data-text="SCN_LOAD: OK">SCN_LOAD: OK</div>
+                <div class="hud-sub">[ <span id="sys-time">00:00:00</span> ]</div>
+            </div>
+            <div class="hud-corner top-right">
+                <div class="hud-glitch" data-text="LOC: TRACKING">LOC: TRACKING</div>
+                <div id="depth-indicator">DPT_000.0m</div>
+            </div>
+            <div class="hud-corner bottom-left">
+                <div class="hud-log-container">
+                    <div id="hud-logs">SYSTEM_INITIALIZED...</div>
+                </div>
+            </div>
+            <div class="hud-corner bottom-right">
+                <div class="stat-row">RELIABILITY: <span class="text-accent">99.99%</span></div>
+                <div class="stat-row">LATENCY: <span id="sys-latency">24ms</span></div>
+                <div class="hud-status-node">
+                    <div class="node-label">SYS_STATUS</div>
+                    <div class="node-bar">
+                        <div class="node-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hud-side-bar">
+                <div class="hud-progress-fill"></div>
+            </div>
+        </div>
+
+        <main id="scene-3d">
+            <!-- Scene 1: Server Core (Hero) -->
+            <section id="hero" class="scene-section active"
+                data-bg="/Users/admin/.gemini/antigravity/brain/9bb25cf8-be98-4385-9630-134d2d846e05/hero_server_core_1769019644526.png">
+                <div class="floating-elements">
+                    <svg class="circuit-overlay">
+                        <use href="#circuit-pattern" />
+                    </svg>
+                    <svg class="data-ring-overlay">
+                        <use href="#data-ring" />
+                    </svg>
+                    <svg class="hex-overlay">
+                        <use href="#hex-grid" />
+                    </svg>
+                    <div class="float-node n1">0xFA42</div>
+                    <div class="float-node n2">SEC_PRTCL</div>
+                    <div class="float-node n3">CORE_V6</div>
+                    <div class="float-node n4">LNK_OK</div>
+                    <div class="float-node n5" style="top:30%; left:85%;">MEM_INIT</div>
+                    <div class="float-node n6" style="top:70%; left:10%;">SYNC_ACTIVE</div>
+                    <div class="server-rack rack-1">
+                        <div class="rack-header">CORE_UNIT_01</div>
+                        <div class="rack-stats">
+                            <span>LOAD: 42%</span>
+                            <span>TEMP: 32C</span>
+                        </div>
+                        <div class="rack-visual">
+                            <div class="rack-mini-graph" data-id="g1"></div>
+                            <div class="rack-row">
+                                <div class="rack-dot active"></div>
+                                <div class="rack-dot"></div>
+                                <div class="rack-dot active"></div>
+                                <div class="rack-dot"></div>
+                            </div>
+                            <div class="rack-row">
+                                <div class="rack-dot"></div>
+                                <div class="rack-dot active"></div>
+                                <div class="rack-dot"></div>
+                                <div class="rack-dot active"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="container hero-3d hero-split">
+                        <!-- Left Side: Profile Image & Contact Menu -->
+                        <div class="hero-left">
+                            <div class="profile-container">
+                                <div class="profile-frame">
+                                    <img src="profile.png" alt="Veera Venkatesh R S" class="profile-image">
+                                    <div class="profile-glow"></div>
+                                </div>
+                            </div>
+
+                            <!-- Expandable Contact Menu -->
+                            <div class="contact-menu">
+                                <div class="contact-trigger">
+                                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M12 16v-4M12 8h.01" />
+                                    </svg>
+                                    <span>CONTACT</span>
+                                </div>
+                                <div class="contact-items">
+                                    <a href="https://www.linkedin.com/in/veera-venkatesh/" target="_blank"
+                                        class="contact-item">
+                                        <svg class="item-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                        </svg>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="mailto:veera_venkatesh@outlook.com" class="contact-item">
+                                        <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                            <polyline points="22,6 12,13 2,6" />
+                                        </svg>
+                                        <span>Email</span>
+                                    </a>
+                                    <a href="tel:+971568015996" class="contact-item">
+                                        <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2">
+                                            <path
+                                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                        </svg>
+                                        <span>+971 568 015 996</span>
+                                    </a>
+                                    <a href="https://x.com/Veer_Venkatesh_" target="_blank" class="contact-item">
+                                        <svg class="item-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                        <span>X (Twitter)</span>
+                                    </a>
+                                    <a href="https://www.instagram.com/veer_venkatesh/" target="_blank"
+                                        class="contact-item">
+                                        <svg class="item-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        </svg>
+                                        <span>Instagram</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Bio Content -->
+                        <div class="hero-right">
+                            <span class="role text-accent hero-reveal" style="transition-delay: 0.2s;">Hi, I'm</span>
+                            <h1 class="name hero-reveal" style="transition-delay: 0.4s;">VEERA VENKATESH R S</h1>
+                            <p class="tagline hero-reveal" style="transition-delay: 0.6s;">
+                                Tech enthusiast and systems aficionado with a passion for problem-solving and a knack
+                                for keeping systems running smoothly. As an IT Manager and engineer, I thrive in the
+                                dynamic world of IT, where every challenge is an opportunity to innovate and optimise.
+                                Beyond the bytes and networks, I believe in giving back to my community through
+                                volunteer work, leveraging technology to make a positive impact wherever I can. With a
+                                blend of technical expertise, adaptability, and a heart for service, I'm committed to
+                                shaping a digital world that's not only efficient but also compassionate. Let's connect
+                                and collaborate to build a brighter, more connected future.
+                            </p>
+
+                            <div class="scroll-pro-tip hero-reveal" style="transition-delay: 1.2s;">
+                                [ SCROLL_TO_INIT_SEQUENCE ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="terminal-window"
+                    data-typewriter="Initializing system core... Checking redundancy... All nodes online.">
+                    <div class="terminal-header">SYS_LOG_V.01</div>
+                    <div class="terminal-body"></div>
+                </div>
+            </section>
+
+            <!-- Philosophy Quote Section -->
+            <section id="philosophy" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <div class="philosophy-quote">
+                            <div class="quote-mark">"</div>
+                            <p class="quote-text">
+                                I believe good work begins with understanding the problem deeply, questioning
+                                assumptions,
+                                and choosing clarity over complexity. My focus is on building solutions that remain
+                                useful,
+                                resilient, and easy to trust long after they are delivered.
+                            </p>
+                            <div class="quote-mark closing">"</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scene 2: About / Experience Overview -->
+            <section id="about" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <h2 class="section-title">About My Experience</h2>
+                        <div class="about-grid">
+                            <div class="about-card">
+                                <div class="card-icon">💼</div>
+                                <h3>7+ Years of Expertise</h3>
+                                <p>Hands-on experience as IT Manager, networking, systems administration, and
+                                    cybersecurity professional.</p>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">🏗️</div>
+                                <h3>Network Architecture</h3>
+                                <p>Proficient in designing and implementing robust network architectures for enterprise
+                                    environments.</p>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">⚙️</div>
+                                <h3>System Optimization</h3>
+                                <p>Skilled in optimizing system operations to ensure seamless performance and
+                                    operational excellence.</p>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">🔒</div>
+                                <h3>Cybersecurity</h3>
+                                <p>Experienced in fortifying digital assets against evolving cyber threats with
+                                    proactive security measures.</p>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">🚀</div>
+                                <h3>Innovation & Problem-Solving</h3>
+                                <p>Thrives in dynamic environments where innovation and creative problem-solving are
+                                    essential.</p>
+                            </div>
+                            <div class="about-card">
+                                <div class="card-icon">🎯</div>
+                                <h3>Strategic Leadership</h3>
+                                <p>Committed to empowering organizations to stay ahead in the ever-changing digital
+                                    landscape.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scene 3: Experience & Education Timeline -->
+            <section id="timeline" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <h2 class="section-title">Experience & Education Journey</h2>
+                        <div class="timeline-wrapper">
+                            <!-- 2024 - Present: IT Manager -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024 - Present</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">💼</div>
+                                    <h3>IT Manager - Service & Solutions</h3>
+                                    <h4>Kaleb General Trade LLC, UAE</h4>
+                                    <p>Led a team of IT professionals to enhance the company's IT infrastructure,
+                                        significantly improving system efficiency. Implemented IT strategies that
+                                        reduced operational costs, improved cybersecurity, and ensured compliance with
+                                        regulations. Coordinated with vendors to enhance service delivery and support.
+                                    </p>
+                                    <div class="timeline-badge">Current Role</div>
+                                </div>
+                            </div>
+
+                            <!-- CISSP Preparation -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2026</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">🔒</div>
+                                    <h3>CISSP Certification</h3>
+                                    <h4>In Progress</h4>
+                                    <p>Currently preparing for the CISSP examination to advance expertise in information
+                                        security. Studying diligently across the eight domains outlined by (ISC)²,
+                                        leveraging diverse study materials and engaging in hands-on exercises. Committed
+                                        to achieving mastery in cybersecurity principles to enhance organizational
+                                        resilience against cyber threats.</p>
+                                    <div class="timeline-badge">In Progress</div>
+                                </div>
+                            </div>
+
+                            <!-- 2022-2024: Senior Systems Administrator -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2022 - 2024</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">⚙️</div>
+                                    <h3>Senior Systems Administrator</h3>
+                                    <h4>Invaria Tech India Private Limited</h4>
+                                    <p>Assumed a leadership role in managing and optimising the company's IT
+                                        infrastructure to drive operational excellence and support business objectives.
+                                        Led system upgrades, performance optimization initiatives, and infrastructure
+                                        modernization projects.</p>
+                                </div>
+                            </div>
+
+                            <!-- Google Data Analytics -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2022</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">📊</div>
+                                    <h3>Google Data Analytics Certification</h3>
+                                    <h4>Coursera - 8 Certificates</h4>
+                                    <p>Completed comprehensive training providing deep understanding of data analytics
+                                        principles and techniques, empowering extraction of actionable insights and
+                                        data-driven decision-making processes effectively.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2019-2022: IT Support Engineer -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2019 - 2022</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">🛠️</div>
+                                    <h3>IT Support Engineer</h3>
+                                    <h4>Compass Global Services India Pvt Ltd</h4>
+                                    <p>Actively contributed to the company's technological infrastructure and ensured
+                                        operational efficiency. Provided technical support, troubleshooting, and system
+                                        maintenance across diverse IT environments.</p>
+                                </div>
+                            </div>
+
+                            <!-- Google IT Support -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2019</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">💻</div>
+                                    <h3>Google IT Support Certification</h3>
+                                    <h4>Coursera - 5 Certificates</h4>
+                                    <p>Successfully completed comprehensive training equipped with solid foundation in
+                                        IT support, covering diverse range of topics essential for effectively
+                                        addressing technical challenges in the field.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2015-2019: Bachelor's Degree -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2015 - 2019</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">🎓</div>
+                                    <h3>Bachelor's Degree</h3>
+                                    <h4>Electronics and Communication Engineering (ECE)</h4>
+                                    <p>P.A. College of Engineering - Provided solid foundation in engineering principles
+                                        and problem-solving skills, laying the groundwork for a successful career in IT
+                                        and systems engineering.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2013-2015: Pre University -->
+                            <div class="timeline-item">
+                                <div class="timeline-year">2013 - 2015</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-icon">📚</div>
+                                    <h3>Pre University Degree</h3>
+                                    <h4>Sharada PU College</h4>
+                                    <p>Completed pre-university education with a focus on electronics. This formative
+                                        period provided robust academic background and laid the groundwork for
+                                        subsequent educational and professional pursuits.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scene 4: Projects -->
+            <section id="projects" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <h2 class="section-title">Strategic Projects</h2>
+                        <div class="projects-grid">
+                            <!-- Project 1: AI Website -->
+                            <article class="project-card">
+                                <div class="project-icon">🚢</div>
+                                <div class="project-status">LIVE</div>
+                                <h3>AI Website - Shipping Industry</h3>
+                                <p class="project-description">Engineered an AI-powered website incorporating shipping
+                                    calculators and vessel tracking to optimize cloud platform efficiency. Orchestrated
+                                    integration of AI technologies to deliver real-time updates enhancing user
+                                    interaction and logistics monitoring.</p>
+                                <ul class="project-highlights">
+                                    <li>✓ Amplified customer engagement and logistics tracking efficiency</li>
+                                    <li>✓ Advanced web development and AI implementation</li>
+                                    <li>✓ Innovated solutions addressing logistics challenges</li>
+                                    <li>✓ Real-time vessel tracking and AI-driven features</li>
+                                </ul>
+                                <div class="project-tech">
+                                    <span class="tech-tag">AI</span>
+                                    <span class="tech-tag">Cloud</span>
+                                    <span class="tech-tag">Real-time</span>
+                                </div>
+                                <a href="https://bejoicegroup.com/" target="_blank" rel="noopener noreferrer"
+                                    class="project-link-btn">
+                                    Visit Website →
+                                </a>
+                            </article>
+
+                            <!-- Project 2: ERP Software -->
+                            <article class="project-card">
+                                <div class="project-icon">📦</div>
+                                <div class="project-status">ACTIVE</div>
+                                <h3>ERP Software for Logistics</h3>
+                                <p class="project-description">Constructed ERP software customized for logistics using
+                                    Odoo, aligning system functionalities with business requirements. Facilitated
+                                    collaboration with the logistics team to accurately capture and translate system
+                                    specifications into functional modules.</p>
+                                <ul class="project-highlights">
+                                    <li>✓ Elevated logistics management efficiency</li>
+                                    <li>✓ Minimized operational costs via tailored ERP deployment</li>
+                                    <li>✓ Devised strategies to improve system usability</li>
+                                    <li>✓ Enhanced logistics workflows through targeted development</li>
+                                </ul>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Odoo</span>
+                                    <span class="tech-tag">ERP</span>
+                                    <span class="tech-tag">Logistics</span>
+                                </div>
+                            </article>
+
+                            <!-- Project 3: 3CX Phone System -->
+                            <article class="project-card">
+                                <div class="project-icon">📞</div>
+                                <div class="project-status">DEPLOYED</div>
+                                <h3>3CX Phone Calling System</h3>
+                                <p class="project-description">Spearheaded the deployment of the 3CX phone calling
+                                    system, configuring IP phones and call routing to enhance communication.
+                                    Administered seamless integration with existing IT infrastructure ensuring
+                                    uninterrupted service delivery.</p>
+                                <ul class="project-highlights">
+                                    <li>✓ Boosted communication efficiency and user satisfaction</li>
+                                    <li>✓ Optimized VOIP and IP phone configurations</li>
+                                    <li>✓ Customized extensions and routing rules</li>
+                                    <li>✓ Addressed organizational communication challenges</li>
+                                </ul>
+                                <div class="project-tech">
+                                    <span class="tech-tag">3CX</span>
+                                    <span class="tech-tag">VOIP</span>
+                                    <span class="tech-tag">Infrastructure</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scene 5: Certifications -->
+            <section id="certifications" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <h2 class="section-title">Certifications & Training</h2>
+                        <div class="certifications-grid">
+                            <!-- Cert 1: Cyber Security -->
+                            <div class="cert-card">
+                                <div class="cert-icon">🔐</div>
+                                <h3>Cyber Security Certification</h3>
+                                <h4>Google</h4>
+                                <p>Comprehensive cybersecurity training covering threat detection, incident response,
+                                    and security best practices.</p>
+                                <div class="cert-badge">Certified</div>
+                            </div>
+
+                            <!-- Cert 2: AI - 1 Million Prompters -->
+                            <div class="cert-card">
+                                <div class="cert-icon">🤖</div>
+                                <h3>Artificial Intelligence</h3>
+                                <h4>1 Million Prompters - Dubai Future Foundation</h4>
+                                <p>Advanced AI training program focused on prompt engineering and AI implementation
+                                    strategies.</p>
+                                <div class="cert-badge">Certified</div>
+                            </div>
+
+                            <!-- Cert 3: ITIL 4 -->
+                            <div class="cert-card">
+                                <div class="cert-icon">⚙️</div>
+                                <h3>ITIL 4 Foundations</h3>
+                                <h4>Service Management - Alison Education</h4>
+                                <p>IT service management framework certification covering service lifecycle and best
+                                    practices.</p>
+                                <div class="cert-badge">Certified</div>
+                            </div>
+
+                            <!-- Cert 4: Advanced Data Analytics -->
+                            <div class="cert-card">
+                                <div class="cert-icon">📊</div>
+                                <h3>Advanced Data Analytics</h3>
+                                <h4>Google</h4>
+                                <p>Advanced analytics techniques including statistical analysis, data visualization, and
+                                    predictive modeling.</p>
+                                <div class="cert-badge">Certified</div>
+                            </div>
+
+                            <!-- Cert 5: IT Support -->
+                            <div class="cert-card">
+                                <div class="cert-icon">💻</div>
+                                <h3>IT Support Certification</h3>
+                                <h4>Google</h4>
+                                <p>Comprehensive IT support training covering troubleshooting, networking, operating
+                                    systems, and security.</p>
+                                <div class="cert-badge">Certified</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scene 6: Contact Me -->
+            <section id="contact" class="scene-section">
+                <div class="section-content">
+                    <div class="container">
+                        <h2 class="section-title">Let's Connect</h2>
+                        <p class="contact-subtitle">Ready to build something amazing together? Reach out through any
+                            channel below.</p>
+
+                        <div class="contact-grid">
+                            <!-- Email -->
+                            <a href="mailto:veera_venkatesh@outlook.com" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                </div>
+                                <h3>Email</h3>
+                                <p>veera_venkatesh@outlook.com</p>
+                                <div class="contact-glow"></div>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+971568015996" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </div>
+                                <h3>Phone</h3>
+                                <p>+971 568 015 996</p>
+                                <div class="contact-glow"></div>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/veer-1997" target="_blank" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </div>
+                                <h3>GitHub</h3>
+                                <p>@veer-1997</p>
+                                <div class="contact-glow"></div>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/veera-venkatesh/" target="_blank" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                    </svg>
+                                </div>
+                                <h3>LinkedIn</h3>
+                                <p>Veera Venkatesh</p>
+                                <div class="contact-glow"></div>
+                            </a>
+
+                            <!-- X (Twitter) -->
+                            <a href="https://x.com/Veer_Venkatesh_" target="_blank" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    </svg>
+                                </div>
+                                <h3>X (Twitter)</h3>
+                                <p>@Veer_Venkatesh_</p>
+                                <div class="contact-glow"></div>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/veer_venkatesh/" target="_blank" class="contact-box">
+                                <div class="contact-icon-wrapper">
+                                    <svg class="contact-svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </div>
+                                <h3>Instagram</h3>
+                                <p>@veer_venkatesh</p>
+                                <div class="contact-glow"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="cosmic-loader.js"></script>
+    <script type="module">
+        import TubesCursor from './tubes-cursor.js';
+        new TubesCursor();
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
