@@ -1,6 +1,4 @@
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.min.js';
-
-export default class TubesCursor {
+class TubesCursor {
     constructor(config = {}) {
         this.canvas = document.getElementById('tubes-canvas');
         if (!this.canvas) return;
@@ -191,3 +189,12 @@ export default class TubesCursor {
         }
     }
 }
+
+// Initialize automatically
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.THREE) {
+        new TubesCursor();
+    } else {
+        console.error("Three.js not loaded");
+    }
+});

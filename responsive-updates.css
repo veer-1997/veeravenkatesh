@@ -175,17 +175,7 @@
         grid-template-columns: 1fr;
     }
 
-    /* Terminal */
-    .terminal-window {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        transform: none;
-        width: 100%;
-        max-width: 100%;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
+
 
     /* Quote */
     .quote-mark {

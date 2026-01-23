@@ -258,29 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Typewriter Utility
-    const typeWriter = (el, text, speed = 40) => {
-        let i = 0;
-        el.innerHTML = '';
-        const interval = setInterval(() => {
-            el.innerHTML += text.charAt(i);
-            i++;
-            if (i >= text.length) clearInterval(interval);
-        }, speed);
-    };
 
-    const initTypewriters = () => {
-        const activeSection = sections[currentIdx];
-        const terminal = activeSection.querySelector('.terminal-window');
-        if (terminal) {
-            const body = terminal.querySelector('.terminal-body');
-            const text = terminal.getAttribute('data-typewriter');
-            typeWriter(body, text);
-        }
-    };
 
-    updateCamera();
-    initTypewriters();
+
+
 
 });
 
