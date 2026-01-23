@@ -195,15 +195,15 @@
     }
 
     .datetime-display-top {
-        right: 50%;
-        transform: translateX(50%);
-        top: 1rem;
+        right: auto;
+        left: 1rem;
+        transform: none;
+        top: 1.2rem;
+        /* Visual center alignment with 40px toggle */
         width: auto;
         font-size: 0.7rem;
         padding: 0 1rem;
         height: 35px;
-        /* Ensure it's hidden initially properly if needed by JS, 
-           but CSS animation handles entry. */
     }
 
     .theme-toggle {
